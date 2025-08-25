@@ -21,8 +21,8 @@ export function DashboardLayout() {
         />
         
         <main className={cn(
-          "flex-1 p-6 transition-all duration-200",
-          sidebarOpen ? "lg:ml-64" : "lg:ml-16"
+          "flex-1 p-4 md:p-6 transition-all duration-300",
+          sidebarOpen ? "lg:ml-80" : "lg:ml-20"
         )}>
           <div className="mx-auto max-w-7xl">
             <Outlet />

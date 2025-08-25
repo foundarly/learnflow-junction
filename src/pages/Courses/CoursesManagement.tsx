@@ -30,11 +30,17 @@ import {
 } from 'lucide-react';
 import { mockCourses } from '@/data/mockData';
 import { Link } from 'react-router-dom';
+import { useAuth } from '@/context/AuthContext';
 
 export default function CoursesManagement() {
+  const { user } = useAuth();
   const [searchTerm, setSearchTerm] = useState('');
   const [statusFilter, setStatusFilter] = useState<string>('all');
   const [courses, setCourses] = useState(mockCourses);
+
+  // Check if user can create/edit courses
+  const canCreateCourse = user?.role && ['super_admin', 'admin', 'trainer'].includes(user.role);
+  const canEditCourse = user?.role && ['super_admin', 'admin', 'trainer'].includes(user.role);
 
   const filteredCourses = courses.filter(course => {
     const matchesSearch = course.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -82,12 +88,14 @@ export default function CoursesManagement() {
             Create, manage, and monitor all educational courses
           </p>
         </div>
-        <Link to="/dashboard/courses/new">
-          <Button size="lg" className="gap-2 w-full sm:w-auto">
-            <Plus className="h-5 w-5" />
-            Create Course
-          </Button>
-        </Link>
+        {canCreateCourse && (
+          <Link to="/dashboard/courses/new">
+            <Button size="lg" className="gap-2 w-full sm:w-auto">
+              <Plus className="h-5 w-5" />
+              Create Course
+            </Button>
+          </Link>
+        )}
       </div>
 
       {/* Stats Cards */}
@@ -211,22 +219,28 @@ export default function CoursesManagement() {
                           <Eye className="mr-2 h-4 w-4" />
                           View Course
                         </DropdownMenuItem>
-                        <DropdownMenuItem className="cursor-pointer">
-                          <Edit className="mr-2 h-4 w-4" />
-                          Edit Course
-                        </DropdownMenuItem>
-                        <DropdownMenuItem className="cursor-pointer">
-                          <Settings className="mr-2 h-4 w-4" />
-                          Course Settings
-                        </DropdownMenuItem>
+                        {canEditCourse && (
+                          <>
+                            <DropdownMenuItem className="cursor-pointer">
+                              <Edit className="mr-2 h-4 w-4" />
+                              Edit Course
+                            </DropdownMenuItem>
+                            <DropdownMenuItem className="cursor-pointer">
+                              <Settings className="mr-2 h-4 w-4" />
+                              Course Settings
+                            </DropdownMenuItem>
+                          </>
+                        )}
                         <DropdownMenuItem className="cursor-pointer">
                           <FileText className="mr-2 h-4 w-4" />
                           View Reports
                         </DropdownMenuItem>
-                        <DropdownMenuItem className="cursor-pointer text-destructive">
-                          <Trash2 className="mr-2 h-4 w-4" />
-                          Delete Course
-                        </DropdownMenuItem>
+                        {canEditCourse && (
+                          <DropdownMenuItem className="cursor-pointer text-destructive">
+                            <Trash2 className="mr-2 h-4 w-4" />
+                            Delete Course
+                          </DropdownMenuItem>
+                        )}
                       </DropdownMenuContent>
                     </DropdownMenu>
                   </div>
@@ -309,12 +323,14 @@ export default function CoursesManagement() {
                         View
                       </Button>
                     </Link>
-                    <Link to={`/dashboard/courses/${course.id}/manage`} className="flex-1">
-                      <Button size="sm" className="w-full">
-                        <Settings className="mr-2 h-4 w-4" />
-                        Manage
-                      </Button>
-                    </Link>
+                    {canEditCourse && (
+                      <Link to={`/dashboard/courses/${course.id}/manage`} className="flex-1">
+                        <Button size="sm" className="w-full">
+                          <Settings className="mr-2 h-4 w-4" />
+                          Manage
+                        </Button>
+                      </Link>
+                    )}
                   </div>
                 </CardContent>
               </Card>

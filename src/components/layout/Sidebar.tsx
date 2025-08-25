@@ -133,11 +133,11 @@ export function Sidebar({ isOpen = true, onClose }: SidebarProps) {
       
       {/* Sidebar */}
       <div className={cn(
-        "fixed left-0 top-16 z-50 h-[calc(100vh-4rem)] w-64 transform border-r border-border bg-card transition-transform duration-200 ease-in-out lg:translate-x-0",
-        isOpen ? "translate-x-0" : "-translate-x-full lg:w-16"
+        "fixed left-0 top-16 z-50 h-[calc(100vh-4rem)] transform border-r border-sidebar-border bg-sidebar backdrop-blur-sm transition-all duration-300 ease-in-out lg:translate-x-0",
+        isOpen ? "translate-x-0 w-80 lg:w-80" : "-translate-x-full lg:translate-x-0 lg:w-20"
       )}>
         <div className="flex h-full flex-col overflow-y-auto p-4">
-          <nav className="flex-1 space-y-2">
+          <nav className="flex-1 space-y-1">
             {userNavItems.map((item) => {
               const Icon = item.icon;
               const isActive = location.pathname === item.href || 
@@ -149,15 +149,21 @@ export function Sidebar({ isOpen = true, onClose }: SidebarProps) {
                   to={item.href}
                   onClick={onClose}
                   className={cn(
-                    "flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-all hover:bg-accent/50",
+                    "flex items-center gap-4 rounded-xl px-4 py-3 text-sm font-medium transition-all duration-200 hover:bg-sidebar-accent group",
                     isActive 
-                      ? "bg-primary text-primary-foreground shadow-sm" 
-                      : "text-muted-foreground hover:text-foreground",
-                    !isOpen && "lg:justify-center lg:px-2"
+                      ? "bg-sidebar-primary text-sidebar-primary-foreground shadow-lg" 
+                      : "text-sidebar-foreground hover:text-sidebar-accent-foreground",
+                    !isOpen && "lg:justify-center lg:px-3"
                   )}
                 >
-                  <Icon className={cn("h-5 w-5 shrink-0", isActive && "text-primary-foreground")} />
-                  <span className={cn("transition-opacity", !isOpen && "lg:opacity-0 lg:w-0")}>
+                  <Icon className={cn(
+                    "h-5 w-5 shrink-0 transition-colors", 
+                    isActive ? "text-sidebar-primary-foreground" : "text-sidebar-foreground group-hover:text-sidebar-accent-foreground"
+                  )} />
+                  <span className={cn(
+                    "transition-all duration-200", 
+                    !isOpen && "lg:opacity-0 lg:w-0 lg:overflow-hidden"
+                  )}>
                     {item.title}
                   </span>
                 </Link>
@@ -166,21 +172,22 @@ export function Sidebar({ isOpen = true, onClose }: SidebarProps) {
           </nav>
 
           {/* User info at bottom */}
-          {isOpen && (
-            <div className="border-t border-border pt-4 mt-4">
-              <div className="px-3 py-2">
-                <div className="text-sm font-medium text-foreground">{user.name}</div>
-                <div className="text-xs text-muted-foreground capitalize">
-                  {user.role.replace('_', ' ')}
-                </div>
-                {user.college_name && (
-                  <div className="text-xs text-muted-foreground mt-1">
-                    {user.college_name}
-                  </div>
-                )}
+          <div className={cn(
+            "border-t border-sidebar-border pt-4 mt-4 transition-all duration-200",
+            !isOpen && "lg:opacity-0"
+          )}>
+            <div className="px-4 py-3 rounded-xl bg-sidebar-accent/50">
+              <div className="text-sm font-semibold text-sidebar-foreground">{user.name}</div>
+              <div className="text-xs text-sidebar-foreground/70 capitalize mt-1">
+                {user.role.replace('_', ' ')}
               </div>
+              {user.college_name && (
+                <div className="text-xs text-sidebar-foreground/60 mt-1 line-clamp-1">
+                  {user.college_name}
+                </div>
+              )}
             </div>
-          )}
+          </div>
         </div>
       </div>
     </>
