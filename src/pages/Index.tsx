@@ -60,8 +60,8 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <header className="border-b border-border/40 bg-background/95 backdrop-blur">
-        <div className="container mx-auto px-4 py-4">
+      <header className="border-b border-border/40 bg-background/95 backdrop-blur sticky top-0 z-50">
+        <div className="container mx-auto px-4 sm:px-6 py-3 sm:py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2">
               <div className="h-8 w-8 rounded-lg bg-gradient-primary flex items-center justify-center">
@@ -70,12 +70,12 @@ const Index = () => {
               <span className="font-bold text-xl text-foreground">LearnFlow</span>
             </div>
             
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-2 sm:gap-4">
               <Link to="/login">
-                <Button variant="ghost">Sign In</Button>
+                <Button variant="ghost" size="sm" className="hidden sm:inline-flex">Sign In</Button>
               </Link>
               <Link to="/login">
-                <Button>Get Started</Button>
+                <Button size="sm" className="text-sm px-4">Get Started</Button>
               </Link>
             </div>
           </div>
@@ -83,35 +83,35 @@ const Index = () => {
       </header>
 
       {/* Hero Section */}
-      <section className="py-20 px-4 bg-gradient-hero text-white">
+      <section className="py-12 sm:py-16 lg:py-20 px-4 bg-gradient-hero text-white">
         <div className="container mx-auto max-w-6xl text-center">
           <div className="flex justify-center mb-6">
-            <div className="h-16 w-16 rounded-2xl bg-white/20 backdrop-blur flex items-center justify-center">
-              <GraduationCap className="h-8 w-8 text-white" />
+            <div className="h-12 w-12 sm:h-16 sm:w-16 rounded-2xl bg-white/20 backdrop-blur flex items-center justify-center">
+              <GraduationCap className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
             </div>
           </div>
           
-          <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 leading-tight">
             Modern EdTech Platform for
-            <span className="block bg-gradient-to-r from-white to-white/80 bg-clip-text text-transparent">
+            <span className="block bg-gradient-to-r from-white to-white/80 bg-clip-text text-transparent mt-2">
               Collaborative Learning
             </span>
           </h1>
           
-          <p className="text-xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg sm:text-xl text-white/90 mb-6 sm:mb-8 max-w-3xl mx-auto leading-relaxed px-4">
             Empower colleges with comprehensive course management, student collaboration tools, 
             and intelligent analytics. Built for educators, designed for success.
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/login">
-              <Button size="xl" variant="secondary" className="gap-2 min-w-[200px]">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4">
+            <Link to="/login" className="w-full sm:w-auto">
+              <Button size="lg" variant="secondary" className="gap-2 w-full sm:min-w-[200px]">
                 Try Demo
-                <ArrowRight className="h-5 w-5" />
+                <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5" />
               </Button>
             </Link>
-            <Link to="/login">
-              <Button size="xl" variant="outline" className="min-w-[200px] text-white border-white/20 hover:bg-white/10">
+            <Link to="/login" className="w-full sm:w-auto">
+              <Button size="lg" variant="outline" className="w-full sm:min-w-[200px] text-white border-white/20 hover:bg-white/10">
                 View Features
               </Button>
             </Link>
@@ -120,30 +120,30 @@ const Index = () => {
       </section>
 
       {/* Features Section */}
-      <section className="py-20 px-4">
+      <section className="py-12 sm:py-16 lg:py-20 px-4">
         <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-foreground mb-4">
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-3 sm:mb-4">
               Everything You Need for Digital Education
             </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto px-4">
               Comprehensive tools designed to streamline educational workflows and enhance learning experiences
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {features.map((feature, index) => {
               const Icon = feature.icon;
               return (
-                <Card key={index} className="card-hover border-border/50">
-                  <CardHeader>
-                    <div className="h-12 w-12 rounded-lg bg-gradient-primary flex items-center justify-center mb-4">
-                      <Icon className="h-6 w-6 text-white" />
+                <Card key={index} className="card-hover border-border/50 h-full">
+                  <CardHeader className="pb-4">
+                    <div className="h-10 w-10 sm:h-12 sm:w-12 rounded-lg bg-gradient-primary flex items-center justify-center mb-3 sm:mb-4">
+                      <Icon className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
                     </div>
-                    <CardTitle className="text-xl">{feature.title}</CardTitle>
+                    <CardTitle className="text-lg sm:text-xl">{feature.title}</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <CardDescription className="text-base leading-relaxed">
+                    <CardDescription className="text-sm sm:text-base leading-relaxed">
                       {feature.description}
                     </CardDescription>
                   </CardContent>
@@ -155,70 +155,68 @@ const Index = () => {
       </section>
 
       {/* Benefits Section */}
-      <section className="py-20 px-4 bg-surface">
+      <section className="py-12 sm:py-16 lg:py-20 px-4 bg-surface">
         <div className="container mx-auto max-w-6xl">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-4xl font-bold text-foreground mb-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center">
+            <div className="order-2 lg:order-1">
+              <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4 sm:mb-6">
                 Built for Modern Educational Institutions
               </h2>
-              <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
+              <p className="text-base sm:text-lg text-muted-foreground mb-6 sm:mb-8 leading-relaxed">
                 Our platform adapts to your institution's unique needs, providing role-based 
                 access and comprehensive management tools for all stakeholders.
               </p>
               
-              <div className="space-y-4">
+              <div className="space-y-3 sm:space-y-4 mb-6 sm:mb-8">
                 {benefits.map((benefit, index) => (
-                  <div key={index} className="flex items-center gap-3">
-                    <CheckCircle className="h-5 w-5 text-success shrink-0" />
-                    <span className="text-foreground">{benefit}</span>
+                  <div key={index} className="flex items-start gap-3">
+                    <CheckCircle className="h-4 w-4 sm:h-5 sm:w-5 text-success shrink-0 mt-0.5" />
+                    <span className="text-sm sm:text-base text-foreground">{benefit}</span>
                   </div>
                 ))}
               </div>
 
-              <div className="mt-8">
-                <Link to="/login">
-                  <Button size="lg" className="gap-2">
-                    Start Your Journey
-                    <ArrowRight className="h-5 w-5" />
-                  </Button>
-                </Link>
-              </div>
+              <Link to="/login">
+                <Button size="lg" className="gap-2 w-full sm:w-auto">
+                  Start Your Journey
+                  <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5" />
+                </Button>
+              </Link>
             </div>
 
-            <div className="relative">
+            <div className="relative order-1 lg:order-2">
               <div className="absolute inset-0 bg-gradient-hero rounded-2xl opacity-10"></div>
               <Card className="relative border-border/50">
                 <CardHeader>
-                  <CardTitle className="text-center">Demo Access</CardTitle>
-                  <CardDescription className="text-center">
+                  <CardTitle className="text-center text-lg sm:text-xl">Demo Access</CardTitle>
+                  <CardDescription className="text-center text-sm sm:text-base">
                     Try our platform with different user roles
                   </CardDescription>
                 </CardHeader>
-                <CardContent className="space-y-3">
-                  <div className="grid grid-cols-1 gap-2 text-sm">
-                    <div className="flex justify-between p-2 rounded bg-muted/50">
+                <CardContent className="space-y-2 sm:space-y-3">
+                  <div className="grid grid-cols-1 gap-2 text-xs sm:text-sm">
+                    <div className="flex justify-between p-2 sm:p-3 rounded bg-muted/50">
                       <span className="font-medium">Super Admin:</span>
-                      <span className="text-muted-foreground">super@admin.com</span>
+                      <span className="text-muted-foreground truncate ml-2">super@admin.com</span>
                     </div>
-                    <div className="flex justify-between p-2 rounded bg-muted/50">
+                    <div className="flex justify-between p-2 sm:p-3 rounded bg-muted/50">
                       <span className="font-medium">College Admin:</span>
-                      <span className="text-muted-foreground">admin@techuni.edu</span>
+                      <span className="text-muted-foreground truncate ml-2">admin@techuni.edu</span>
                     </div>
-                    <div className="flex justify-between p-2 rounded bg-muted/50">
+                    <div className="flex justify-between p-2 sm:p-3 rounded bg-muted/50">
                       <span className="font-medium">Trainer:</span>
-                      <span className="text-muted-foreground">sarah.trainer@techuni.edu</span>
+                      <span className="text-muted-foreground truncate ml-2">sarah.trainer@techuni.edu</span>
                     </div>
-                    <div className="flex justify-between p-2 rounded bg-muted/50">
+                    <div className="flex justify-between p-2 sm:p-3 rounded bg-muted/50">
                       <span className="font-medium">Staff:</span>
-                      <span className="text-muted-foreground">mike.staff@techuni.edu</span>
+                      <span className="text-muted-foreground truncate ml-2">mike.staff@techuni.edu</span>
                     </div>
-                    <div className="flex justify-between p-2 rounded bg-muted/50">
+                    <div className="flex justify-between p-2 sm:p-3 rounded bg-muted/50">
                       <span className="font-medium">Student:</span>
-                      <span className="text-muted-foreground">alice.student@techuni.edu</span>
+                      <span className="text-muted-foreground truncate ml-2">alice.student@techuni.edu</span>
                     </div>
                   </div>
-                  <p className="text-xs text-muted-foreground text-center">
+                  <p className="text-xs text-muted-foreground text-center pt-2">
                     Use any password to access demo accounts
                   </p>
                 </CardContent>
@@ -228,38 +226,71 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Statistics Section */}
+      <section className="py-12 sm:py-16 lg:py-20 px-4">
+        <div className="container mx-auto max-w-6xl">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-3 sm:mb-4">
+              Trusted by Educational Institutions
+            </h2>
+            <p className="text-base sm:text-lg text-muted-foreground">
+              Join the growing community of educators and students
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+            <div className="text-center">
+              <div className="text-3xl sm:text-4xl font-bold text-primary mb-2">500+</div>
+              <div className="text-sm sm:text-base text-muted-foreground">Educational Institutions</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl sm:text-4xl font-bold text-primary mb-2">50K+</div>
+              <div className="text-sm sm:text-base text-muted-foreground">Active Students</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl sm:text-4xl font-bold text-primary mb-2">10K+</div>
+              <div className="text-sm sm:text-base text-muted-foreground">Courses Created</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl sm:text-4xl font-bold text-primary mb-2">98%</div>
+              <div className="text-sm sm:text-base text-muted-foreground">Satisfaction Rate</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
-      <section className="py-20 px-4 bg-gradient-hero text-white">
+      <section className="py-12 sm:py-16 lg:py-20 px-4 bg-gradient-hero text-white">
         <div className="container mx-auto max-w-4xl text-center">
-          <h2 className="text-4xl font-bold mb-6">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4 sm:mb-6">
             Ready to Transform Your Educational Experience?
           </h2>
-          <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+          <p className="text-lg sm:text-xl text-white/90 mb-6 sm:mb-8 max-w-2xl mx-auto px-4">
             Join hundreds of educational institutions already using LearnFlow to 
             deliver exceptional learning experiences.
           </p>
           
           <Link to="/login">
-            <Button size="xl" variant="secondary" className="gap-2">
+            <Button size="lg" variant="secondary" className="gap-2 w-full sm:w-auto sm:min-w-[240px]">
               Get Started Today
-              <ArrowRight className="h-5 w-5" />
+              <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5" />
             </Button>
           </Link>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-border/40 py-8 px-4">
+      <footer className="border-t border-border/40 py-6 sm:py-8 px-4">
         <div className="container mx-auto max-w-6xl">
-          <div className="flex flex-col md:flex-row items-center justify-between">
-            <div className="flex items-center space-x-2 mb-4 md:mb-0">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="flex items-center space-x-2">
               <div className="h-6 w-6 rounded bg-gradient-primary flex items-center justify-center">
                 <span className="text-white font-bold text-sm">L</span>
               </div>
               <span className="font-semibold text-foreground">LearnFlow</span>
             </div>
             
-            <p className="text-sm text-muted-foreground">
+            <p className="text-xs sm:text-sm text-muted-foreground text-center sm:text-right">
               © 2024 LearnFlow. Modern EdTech Platform for Collaborative Learning.
             </p>
           </div>

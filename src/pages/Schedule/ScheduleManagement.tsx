@@ -164,13 +164,13 @@ export default function ScheduleManagement() {
 
   const EventCard = ({ event }: { event: ScheduleEvent }) => (
     <Card className="card-hover">
-      <CardContent className="p-4">
-        <div className="flex items-start justify-between mb-3">
+      <CardContent className="p-3 sm:p-4">
+        <div className="flex flex-col gap-3">
           <div className="flex-1">
-            <div className="flex items-center gap-2 mb-2">
+            <div className="flex flex-wrap items-center gap-2 mb-2">
               <Badge variant={getTypeColor(event.type)} className="gap-1 text-xs">
                 {getTypeIcon(event.type)}
-                {event.type}
+                <span className="hidden sm:inline">{event.type}</span>
               </Badge>
               <Badge variant="outline" className={`text-xs ${getStatusColor(event.status)}`}>
                 {event.status}
@@ -178,66 +178,66 @@ export default function ScheduleManagement() {
               {event.is_online && (
                 <Badge variant="outline" className="gap-1 text-xs">
                   <Video className="h-3 w-3" />
-                  Online
+                  <span className="hidden sm:inline">Online</span>
                 </Badge>
               )}
             </div>
-            <h4 className="font-semibold text-foreground mb-1">{event.title}</h4>
+            <h4 className="font-semibold text-foreground mb-1 text-sm sm:text-base line-clamp-2">{event.title}</h4>
             {event.course_name && (
-              <p className="text-sm text-muted-foreground mb-2">{event.course_name}</p>
+              <p className="text-sm text-muted-foreground mb-2 line-clamp-1">{event.course_name}</p>
             )}
             {event.description && (
-              <p className="text-sm text-muted-foreground mb-3">{event.description}</p>
+              <p className="text-sm text-muted-foreground mb-3 line-clamp-2">{event.description}</p>
             )}
           </div>
-        </div>
 
-        <div className="space-y-2 text-sm text-muted-foreground">
-          <div className="flex items-center gap-4">
-            <span className="flex items-center gap-1">
-              <Calendar className="h-4 w-4" />
-              {new Date(event.date).toLocaleDateString()}
-            </span>
-            <span className="flex items-center gap-1">
-              <Clock className="h-4 w-4" />
-              {event.start_time} - {event.end_time}
-            </span>
-          </div>
-          
-          <div className="flex items-center gap-4">
-            <span className="flex items-center gap-1">
-              <MapPin className="h-4 w-4" />
-              {event.location}
-            </span>
-            {event.attendees && (
+          <div className="space-y-2 text-xs sm:text-sm text-muted-foreground">
+            <div className="flex flex-wrap items-center gap-3">
               <span className="flex items-center gap-1">
-                <Users className="h-4 w-4" />
-                {event.attendees} attendees
+                <Calendar className="h-3 w-3" />
+                {new Date(event.date).toLocaleDateString()}
               </span>
+              <span className="flex items-center gap-1">
+                <Clock className="h-3 w-3" />
+                {event.start_time} - {event.end_time}
+              </span>
+            </div>
+            
+            <div className="flex flex-wrap items-center gap-3">
+              <span className="flex items-center gap-1 line-clamp-1">
+                <MapPin className="h-3 w-3 shrink-0" />
+                <span className="truncate">{event.location}</span>
+              </span>
+              {event.attendees && (
+                <span className="flex items-center gap-1">
+                  <Users className="h-3 w-3" />
+                  {event.attendees} attendees
+                </span>
+              )}
+            </div>
+
+            {event.instructor && (
+              <div className="flex items-center gap-1 text-xs">
+                <span className="truncate">Instructor: {event.instructor}</span>
+              </div>
             )}
           </div>
 
-          {event.instructor && (
-            <div className="flex items-center gap-1">
-              <span>Instructor: {event.instructor}</span>
-            </div>
-          )}
-        </div>
-
-        <div className="flex gap-2 mt-4 pt-3 border-t border-border">
-          {event.meeting_link && (
-            <Button size="sm" variant="outline" className="gap-2">
-              <Video className="h-4 w-4" />
-              Join
+          <div className="flex flex-wrap gap-2 pt-3 border-t border-border">
+            {event.meeting_link && (
+              <Button size="sm" variant="outline" className="gap-1 flex-1 sm:flex-none text-xs">
+                <Video className="h-3 w-3" />
+                Join
+              </Button>
+            )}
+            <Button size="sm" variant="outline" className="gap-1 flex-1 sm:flex-none text-xs">
+              <Bell className="h-3 w-3" />
+              Remind
             </Button>
-          )}
-          <Button size="sm" variant="outline" className="gap-2">
-            <Bell className="h-4 w-4" />
-            Remind
-          </Button>
-          <Button size="sm" variant="outline">
-            Details
-          </Button>
+            <Button size="sm" variant="outline" className="flex-1 sm:flex-none text-xs">
+              Details
+            </Button>
+          </div>
         </div>
       </CardContent>
     </Card>
@@ -246,31 +246,31 @@ export default function ScheduleManagement() {
   return (
     <div className="space-y-8">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-        <div>
-          <h1 className="text-3xl font-bold text-foreground">Schedule</h1>
-          <p className="text-muted-foreground mt-1">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <div className="space-y-1">
+          <h1 className="text-2xl sm:text-3xl font-bold text-foreground">Schedule</h1>
+          <p className="text-sm sm:text-base text-muted-foreground">
             Manage your classes, assignments, and academic events
           </p>
         </div>
-        <div className="flex gap-2">
-          <Button variant="outline" size="lg" className="gap-2">
-            <Download className="h-5 w-5" />
+        <div className="flex flex-col gap-2 sm:flex-row">
+          <Button variant="outline" size="default" className="gap-2 w-full sm:w-auto text-sm">
+            <Download className="h-4 w-4" />
             Export
           </Button>
-          <Button variant="outline" size="lg" className="gap-2">
-            <RefreshCw className="h-5 w-5" />
+          <Button variant="outline" size="default" className="gap-2 w-full sm:w-auto text-sm">
+            <RefreshCw className="h-4 w-4" />
             Sync
           </Button>
-          <Button size="lg" className="gap-2">
-            <Plus className="h-5 w-5" />
+          <Button size="default" className="gap-2 w-full sm:w-auto text-sm">
+            <Plus className="h-4 w-4" />
             Add Event
           </Button>
         </div>
       </div>
 
       {/* Quick Stats */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium text-muted-foreground">
@@ -338,7 +338,7 @@ export default function ScheduleManagement() {
 
         <TabsContent value="today" className="space-y-6">
           {todayEvents.length > 0 ? (
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
               {todayEvents.map((event) => (
                 <EventCard key={event.id} event={event} />
               ))}
@@ -355,7 +355,7 @@ export default function ScheduleManagement() {
         </TabsContent>
 
         <TabsContent value="week" className="space-y-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
             {thisWeekEvents.map((event) => (
               <EventCard key={event.id} event={event} />
             ))}
@@ -363,7 +363,7 @@ export default function ScheduleManagement() {
         </TabsContent>
 
         <TabsContent value="upcoming" className="space-y-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
             {upcomingEvents.map((event) => (
               <EventCard key={event.id} event={event} />
             ))}

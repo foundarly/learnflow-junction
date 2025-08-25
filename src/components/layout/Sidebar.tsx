@@ -153,7 +153,7 @@ export function Sidebar({ isOpen = true, onClose }: SidebarProps) {
                     isActive 
                       ? "bg-sidebar-primary text-sidebar-primary-foreground shadow-lg" 
                       : "text-sidebar-foreground hover:text-sidebar-accent-foreground",
-                    !isOpen && "lg:justify-center lg:px-3"
+                    !isOpen && "lg:justify-center lg:px-2"
                   )}
                 >
                   <Icon className={cn(
