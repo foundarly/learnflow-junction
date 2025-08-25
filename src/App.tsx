@@ -204,6 +204,27 @@ const App = () => (
               <Route path="settings" element={<div className="p-8">Settings - Coming Soon</div>} />
             </Route>
 
+            {/* Direct Access Redirects */}
+            <Route path="/courses" element={<Navigate to="/dashboard/courses" replace />} />
+            <Route path="/courses/*" element={<Navigate to="/dashboard/courses" replace />} />
+            <Route path="/my-courses" element={<Navigate to="/dashboard/my-courses" replace />} />
+            <Route path="/assignments" element={<Navigate to="/dashboard/assignments" replace />} />
+            <Route path="/assignments/*" element={<Navigate to="/dashboard/assignments" replace />} />
+            <Route path="/groups" element={<Navigate to="/dashboard/groups" replace />} />
+            <Route path="/groups/*" element={<Navigate to="/dashboard/groups" replace />} />
+            <Route path="/colleges" element={<Navigate to="/dashboard/colleges" replace />} />
+            <Route path="/colleges/*" element={<Navigate to="/dashboard/colleges" replace />} />
+            <Route path="/users" element={<Navigate to="/dashboard/users" replace />} />
+            <Route path="/users/*" element={<Navigate to="/dashboard/users" replace />} />
+            <Route path="/calendar" element={<Navigate to="/dashboard/calendar" replace />} />
+            <Route path="/profile" element={<Navigate to="/dashboard/profile" replace />} />
+            <Route path="/schedule" element={<Navigate to="/dashboard/schedule" replace />} />
+            <Route path="/progress" element={<Navigate to="/dashboard/progress" replace />} />
+            <Route path="/attendance" element={<Navigate to="/dashboard/attendance" replace />} />
+            <Route path="/analytics" element={<Navigate to="/dashboard/analytics" replace />} />
+            <Route path="/analytics/*" element={<Navigate to="/dashboard/analytics" replace />} />
+            <Route path="/settings" element={<Navigate to="/dashboard/settings" replace />} />
+
             {/* Unauthorized Route */}
             <Route 
               path="/unauthorized" 
