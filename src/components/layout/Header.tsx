@@ -45,7 +45,7 @@ export function Header({ onMenuToggle, showMenuButton = false }: HeaderProps) {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-16 items-center justify-between px-4">
+      <div className="container flex h-16 items-center justify-between px-4 sm:px-6">
         <div className="flex items-center gap-4">
           {showMenuButton && (
             <Button
@@ -86,7 +86,7 @@ export function Header({ onMenuToggle, showMenuButton = false }: HeaderProps) {
                       {user.name.split(' ').map(n => n[0]).join('').toUpperCase()}
                     </AvatarFallback>
                   </Avatar>
-                  <div className="flex flex-col items-start">
+                  <div className="hidden sm:flex flex-col items-start">
                     <span className="text-sm font-medium">{user.name}</span>
                     <span className={`text-xs ${getRoleColor(user.role)}`}>
                       {getRoleLabel(user.role)}

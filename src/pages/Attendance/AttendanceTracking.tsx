@@ -124,27 +124,27 @@ export default function AttendanceTracking() {
   return (
     <div className="space-y-8">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-        <div>
-          <h1 className="text-3xl font-bold text-foreground">Attendance Tracking</h1>
-          <p className="text-muted-foreground mt-1">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <div className="space-y-1">
+          <h1 className="text-2xl sm:text-3xl font-bold text-foreground">Attendance Tracking</h1>
+          <p className="text-sm sm:text-base text-muted-foreground">
             Monitor student attendance and participation across all courses
           </p>
         </div>
-        <div className="flex gap-2">
-          <Button variant="outline" size="lg" className="gap-2">
-            <Download className="h-5 w-5" />
+        <div className="flex flex-col gap-2 sm:flex-row">
+          <Button variant="outline" size="default" className="gap-2 w-full sm:w-auto">
+            <Download className="h-4 w-4" />
             Export Report
           </Button>
-          <Button size="lg" className="gap-2">
-            <Calendar className="h-5 w-5" />
+          <Button size="default" className="gap-2 w-full sm:w-auto">
+            <Calendar className="h-4 w-4" />
             Mark Attendance
           </Button>
         </div>
       </div>
 
       {/* Stats Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium text-muted-foreground">
@@ -201,56 +201,58 @@ export default function AttendanceTracking() {
       {/* Attendance Records */}
       <Card>
         <CardHeader>
-          <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
-            <div>
-              <CardTitle>Attendance Records</CardTitle>
-              <CardDescription>Track and manage student attendance</CardDescription>
-            </div>
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full lg:w-auto">
-              <div className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                <Input
-                  placeholder="Search students or courses..."
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  className="pl-10 w-full sm:w-80"
-                />
+            <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
+              <div className="space-y-1">
+                <CardTitle className="text-base sm:text-lg">Attendance Records</CardTitle>
+                <CardDescription className="text-sm">Track and manage student attendance</CardDescription>
               </div>
-              
-              <Select value={courseFilter} onValueChange={setCourseFilter}>
-                <SelectTrigger className="w-full sm:w-48">
-                  <SelectValue placeholder="All Courses" />
-                </SelectTrigger>
-                <SelectContent className="bg-popover border border-border shadow-lg z-50">
-                  <SelectItem value="all">All Courses</SelectItem>
-                  <SelectItem value="Web Development Fundamentals">Web Development</SelectItem>
-                  <SelectItem value="Data Science Basics">Data Science</SelectItem>
-                  <SelectItem value="Mobile App Development">Mobile Development</SelectItem>
-                </SelectContent>
-              </Select>
+              <div className="flex flex-col gap-3 w-full lg:w-auto">
+                <div className="relative">
+                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                  <Input
+                    placeholder="Search students or courses..."
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    className="pl-10 w-full"
+                  />
+                </div>
+                
+                <div className="flex flex-col sm:flex-row gap-2">
+                  <Select value={courseFilter} onValueChange={setCourseFilter}>
+                    <SelectTrigger className="w-full sm:w-48">
+                      <SelectValue placeholder="All Courses" />
+                    </SelectTrigger>
+                    <SelectContent className="bg-popover border border-border shadow-lg z-50">
+                      <SelectItem value="all">All Courses</SelectItem>
+                      <SelectItem value="Web Development Fundamentals">Web Development</SelectItem>
+                      <SelectItem value="Data Science Basics">Data Science</SelectItem>
+                      <SelectItem value="Mobile App Development">Mobile Development</SelectItem>
+                    </SelectContent>
+                  </Select>
 
-              <Select value={statusFilter} onValueChange={setStatusFilter}>
-                <SelectTrigger className="w-full sm:w-32">
-                  <SelectValue placeholder="Status" />
-                </SelectTrigger>
-                <SelectContent className="bg-popover border border-border shadow-lg z-50">
-                  <SelectItem value="all">All Status</SelectItem>
-                  <SelectItem value="present">Present</SelectItem>
-                  <SelectItem value="late">Late</SelectItem>
-                  <SelectItem value="absent">Absent</SelectItem>
-                </SelectContent>
-              </Select>
+                  <Select value={statusFilter} onValueChange={setStatusFilter}>
+                    <SelectTrigger className="w-full sm:w-32">
+                      <SelectValue placeholder="Status" />
+                    </SelectTrigger>
+                    <SelectContent className="bg-popover border border-border shadow-lg z-50">
+                      <SelectItem value="all">All Status</SelectItem>
+                      <SelectItem value="present">Present</SelectItem>
+                      <SelectItem value="late">Late</SelectItem>
+                      <SelectItem value="absent">Absent</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
             </div>
-          </div>
         </CardHeader>
         <CardContent>
           <div className="space-y-4">
             {filteredRecords.map((record) => (
-              <div key={record.id} className="p-4 rounded-lg border hover:shadow-md transition-all">
-                <div className="flex items-start justify-between mb-3">
-                  <div className="flex-1">
-                    <div className="flex items-center gap-3 mb-2">
-                      <h4 className="font-semibold text-foreground">{record.student_name}</h4>
+              <div key={record.id} className="p-3 sm:p-4 rounded-lg border hover:shadow-md transition-all">
+                <div className="flex flex-col sm:flex-row items-start justify-between gap-3">
+                  <div className="flex-1 w-full">
+                    <div className="flex flex-wrap items-center gap-2 mb-2">
+                      <h4 className="font-semibold text-foreground text-sm sm:text-base">{record.student_name}</h4>
                       <Badge variant="outline" className="text-xs">
                         {record.student_id}
                       </Badge>
@@ -259,25 +261,25 @@ export default function AttendanceTracking() {
                         {record.status}
                       </Badge>
                     </div>
-                    <p className="text-sm text-muted-foreground mb-1">{record.course_name}</p>
-                    <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                    <p className="text-sm text-muted-foreground mb-2 line-clamp-1">{record.course_name}</p>
+                    <div className="flex flex-wrap items-center gap-3 text-xs sm:text-sm text-muted-foreground">
                       <span className="flex items-center gap-1">
-                        <Calendar className="h-4 w-4" />
+                        <Calendar className="h-3 w-3" />
                         {new Date(record.date).toLocaleDateString()}
                       </span>
                       <span className="flex items-center gap-1">
-                        <Clock className="h-4 w-4" />
+                        <Clock className="h-3 w-3" />
                         {record.time}
                       </span>
-                      <span>Duration: {record.duration}</span>
+                      <span className="hidden sm:inline">Duration: {record.duration}</span>
                     </div>
                   </div>
                   
-                  <div className="flex gap-2">
-                    <Button size="sm" variant="outline">
+                  <div className="flex gap-2 w-full sm:w-auto">
+                    <Button size="sm" variant="outline" className="flex-1 sm:flex-none">
                       Edit
                     </Button>
-                    <Button size="sm" variant="outline">
+                    <Button size="sm" variant="outline" className="flex-1 sm:flex-none">
                       Contact
                     </Button>
                   </div>

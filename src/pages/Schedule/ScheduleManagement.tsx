@@ -14,7 +14,10 @@ import {
   Users,
   BookOpen,
   Bell,
-  RefreshCw
+  RefreshCw,
+  FileText,
+  Award,
+  Settings
 } from 'lucide-react';
 import { useAuth } from '@/context/AuthContext';
 
@@ -370,6 +373,3 @@ export default function ScheduleManagement() {
     </div>
   );
 }
-
-// Missing imports fix
-import { FileText, Award, Settings } from 'lucide-react';
