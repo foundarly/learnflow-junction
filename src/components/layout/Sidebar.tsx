@@ -134,7 +134,7 @@ export function Sidebar({ isOpen = true, onClose }: SidebarProps) {
       {/* Sidebar */}
       <div className={cn(
         "fixed left-0 top-16 z-50 h-[calc(100vh-4rem)] transform border-r border-sidebar-border bg-sidebar backdrop-blur-sm transition-all duration-300 ease-in-out lg:translate-x-0",
-        isOpen ? "translate-x-0 w-80 lg:w-80" : "-translate-x-full lg:translate-x-0 lg:w-20"
+        isOpen ? "translate-x-0 w-80 lg:w-80" : "-translate-x-full lg:translate-x-0 lg:w-16"
       )}>
         <div className="flex h-full flex-col p-3 sm:p-4 lg:overflow-hidden overflow-y-auto">
           <nav className="flex-1 space-y-1 lg:space-y-2">
@@ -149,11 +149,11 @@ export function Sidebar({ isOpen = true, onClose }: SidebarProps) {
                   to={item.href}
                   onClick={onClose}
                   className={cn(
-                    "flex items-center gap-3 lg:gap-4 rounded-xl px-3 lg:px-4 py-2.5 lg:py-3 text-sm font-medium transition-all duration-200 hover:bg-sidebar-accent group",
+                    "flex items-center rounded-xl px-3 lg:px-4 py-2.5 lg:py-3 text-sm font-medium transition-all duration-200 hover:bg-sidebar-accent group",
                     isActive 
                       ? "bg-sidebar-primary text-sidebar-primary-foreground shadow-lg" 
                       : "text-sidebar-foreground hover:text-sidebar-accent-foreground",
-                    !isOpen && "lg:justify-center lg:px-2"
+                    !isOpen ? "lg:justify-center lg:px-2 lg:gap-0" : "gap-3 lg:gap-4"
                   )}
                 >
                   <Icon className={cn(
@@ -162,7 +162,7 @@ export function Sidebar({ isOpen = true, onClose }: SidebarProps) {
                   )} />
                   <span className={cn(
                     "transition-all duration-200", 
-                    !isOpen && "lg:opacity-0 lg:w-0 lg:overflow-hidden"
+                    !isOpen && "lg:opacity-0 lg:w-0 lg:overflow-hidden lg:absolute"
                   )}>
                     {item.title}
                   </span>
@@ -174,7 +174,7 @@ export function Sidebar({ isOpen = true, onClose }: SidebarProps) {
           {/* User info at bottom */}
           <div className={cn(
             "border-t border-sidebar-border pt-3 lg:pt-4 mt-3 lg:mt-4 transition-all duration-200",
-            !isOpen && "lg:opacity-0"
+            !isOpen && "lg:opacity-0 lg:pointer-events-none"
           )}>
             <div className="px-3 lg:px-4 py-2.5 lg:py-3 rounded-xl bg-sidebar-accent/50">
               <div className="text-sm font-semibold text-sidebar-foreground">{user.name}</div>
