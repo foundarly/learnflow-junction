@@ -20,6 +20,11 @@ import AssignmentsManagement from "./pages/Assignments/AssignmentsManagement";
 import GroupsManagement from "./pages/Groups/GroupsManagement";
 import CalendarView from "./pages/Calendar/CalendarView";
 import UserProfile from "./pages/Profile/UserProfile";
+import AttendanceTracking from "./pages/Attendance/AttendanceTracking";
+import ProgressTracking from "./pages/Progress/ProgressTracking";
+import ScheduleManagement from "./pages/Schedule/ScheduleManagement";
+import AnalyticsDashboard from "./pages/Analytics/AnalyticsDashboard";
+import ApplicationSettings from "./pages/Settings/ApplicationSettings";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -197,11 +202,23 @@ const App = () => (
               {/* Common Routes */}
               <Route path="calendar" element={<CalendarView />} />
               <Route path="profile" element={<UserProfile />} />
-              <Route path="schedule" element={<div className="p-8">Schedule - Coming Soon</div>} />
-              <Route path="progress" element={<div className="p-8">Progress - Coming Soon</div>} />
-              <Route path="attendance" element={<div className="p-8">Attendance - Coming Soon</div>} />
-              <Route path="analytics" element={<div className="p-8">Analytics - Coming Soon</div>} />
-              <Route path="settings" element={<div className="p-8">Settings - Coming Soon</div>} />
+              <Route path="attendance" element={
+                <ProtectedRoute allowedRoles={['trainer', 'staff']}>
+                  <AttendanceTracking />
+                </ProtectedRoute>
+              } />
+              <Route path="progress" element={
+                <ProtectedRoute allowedRoles={['trainer', 'student']}>
+                  <ProgressTracking />
+                </ProtectedRoute>
+              } />
+              <Route path="schedule" element={<ScheduleManagement />} />
+              <Route path="analytics" element={
+                <ProtectedRoute allowedRoles={['super_admin', 'admin', 'trainer']}>
+                  <AnalyticsDashboard />
+                </ProtectedRoute>
+              } />
+              <Route path="settings" element={<ApplicationSettings />} />
             </Route>
 
             {/* Direct Access Redirects */}

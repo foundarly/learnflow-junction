@@ -39,73 +39,73 @@ const navigationItems: NavItem[] = [
   },
   {
     title: 'Colleges',
-    href: '/colleges',
+    href: '/dashboard/colleges',
     icon: Building,
     roles: ['super_admin']
   },
   {
     title: 'Users',
-    href: '/users',
+    href: '/dashboard/users',
     icon: Users,
     roles: ['super_admin', 'admin']
   },
   {
     title: 'Courses',
-    href: '/courses',
+    href: '/dashboard/courses',
     icon: BookOpen,
     roles: ['super_admin', 'admin', 'trainer', 'student']
   },
   {
     title: 'My Courses',
-    href: '/my-courses',
+    href: '/dashboard/my-courses',
     icon: GraduationCap,
     roles: ['student']
   },
   {
     title: 'Assignments',
-    href: '/assignments',
+    href: '/dashboard/assignments',
     icon: FileText,
     roles: ['trainer', 'student']
   },
   {
     title: 'Groups',
-    href: '/groups',
+    href: '/dashboard/groups',
     icon: MessageSquare,
     roles: ['staff', 'student']
   },
   {
     title: 'Calendar',
-    href: '/calendar',
+    href: '/dashboard/calendar',
     icon: Calendar,
     roles: ['super_admin', 'admin', 'trainer', 'staff', 'student']
   },
   {
     title: 'Attendance',
-    href: '/attendance',
+    href: '/dashboard/attendance',
     icon: UserCheck,
     roles: ['trainer', 'staff']
   },
   {
     title: 'Progress',
-    href: '/progress',
+    href: '/dashboard/progress',
     icon: Award,
     roles: ['trainer', 'student']
   },
   {
     title: 'Schedule',
-    href: '/schedule',
+    href: '/dashboard/schedule',
     icon: Clock,
     roles: ['trainer', 'staff', 'student']
   },
   {
     title: 'Analytics',
-    href: '/analytics',
+    href: '/dashboard/analytics',
     icon: BarChart3,
     roles: ['super_admin', 'admin', 'trainer']
   },
   {
     title: 'Settings',
-    href: '/settings',
+    href: '/dashboard/settings',
     icon: Settings,
     roles: ['super_admin', 'admin', 'trainer', 'staff', 'student']
   }
