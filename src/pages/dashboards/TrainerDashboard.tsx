@@ -72,13 +72,13 @@ export function TrainerDashboard() {
           </p>
         </div>
         <div className="flex gap-2">
-          <Link to="/content/upload">
+          <Link to="/dashboard/content/upload">
             <Button variant="outline" size="lg" className="gap-2">
               <Upload className="h-5 w-5" />
               Upload Content
             </Button>
           </Link>
-          <Link to="/assignments/new">
+          <Link to="/dashboard/assignments/new">
             <Button size="lg" className="gap-2">
               <Plus className="h-5 w-5" />
               New Assignment
@@ -125,7 +125,7 @@ export function TrainerDashboard() {
                 <CardTitle>My Courses</CardTitle>
                 <CardDescription>Courses you're currently teaching</CardDescription>
               </div>
-              <Link to="/courses">
+              <Link to="/dashboard/courses">
                 <Button variant="ghost" size="sm">View All</Button>
               </Link>
             </div>
@@ -165,12 +165,12 @@ export function TrainerDashboard() {
                     </span>
                   </div>
                   <div className="flex gap-2">
-                    <Link to={`/courses/${course.id}/content`}>
+                    <Link to={`/dashboard/courses/${course.id}/content`}>
                       <Button size="sm" variant="outline">
                         Content
                       </Button>
                     </Link>
-                    <Link to={`/courses/${course.id}/manage`}>
+                    <Link to={`/dashboard/courses/${course.id}/manage`}>
                       <Button size="sm" className="gap-2">
                         <Play className="h-4 w-4" />
                         Manage
@@ -206,7 +206,7 @@ export function TrainerDashboard() {
                 </div>
               </div>
             ))}
-            <Link to="/schedule">
+            <Link to="/dashboard/schedule">
               <Button variant="outline" size="sm" className="w-full">
                 View Schedule
               </Button>
@@ -225,7 +225,7 @@ export function TrainerDashboard() {
                 <CardTitle>Assignment Management</CardTitle>
                 <CardDescription>Track and grade student submissions</CardDescription>
               </div>
-              <Link to="/assignments">
+              <Link to="/dashboard/assignments">
                 <Button variant="ghost" size="sm">View All</Button>
               </Link>
             </div>
@@ -300,7 +300,7 @@ export function TrainerDashboard() {
               </div>
             </div>
 
-            <Link to="/analytics/students">
+            <Link to="/dashboard/analytics/students">
               <Button variant="outline" size="sm" className="w-full">
                 View Detailed Analytics
               </Button>

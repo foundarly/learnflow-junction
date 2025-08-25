@@ -76,7 +76,7 @@ export default function MyCourses() {
             Track your learning progress and continue your studies
           </p>
         </div>
-        <Link to="/courses">
+        <Link to="/dashboard/courses">
           <Button size="lg" className="gap-2 w-full sm:w-auto">
             <BookOpen className="h-5 w-5" />
             Browse Courses
@@ -330,7 +330,7 @@ export default function MyCourses() {
               ? 'You haven\'t completed any courses yet'
               : 'You are not enrolled in any courses yet'}
           </p>
-          <Link to="/courses">
+          <Link to="/dashboard/courses">
             <Button className="gap-2">
               <BookOpen className="h-4 w-4" />
               Browse Available Courses

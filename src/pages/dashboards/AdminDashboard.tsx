@@ -69,13 +69,13 @@ export function AdminDashboard() {
           </p>
         </div>
         <div className="flex gap-2">
-          <Link to="/courses/new">
+          <Link to="/dashboard/courses/new">
             <Button variant="outline" size="lg" className="gap-2">
               <BookPlus className="h-5 w-5" />
               Add Course
             </Button>
           </Link>
-          <Link to="/users/invite">
+          <Link to="/dashboard/users/invite">
             <Button size="lg" className="gap-2">
               <UserPlus className="h-5 w-5" />
               Invite User
@@ -119,7 +119,7 @@ export function AdminDashboard() {
                 <CardTitle>Course Management</CardTitle>
                 <CardDescription>Oversee active courses and their performance</CardDescription>
               </div>
-              <Link to="/courses">
+              <Link to="/dashboard/courses">
                 <Button variant="ghost" size="sm">View All</Button>
               </Link>
             </div>
@@ -149,7 +149,7 @@ export function AdminDashboard() {
                       <Badge key={tag} variant="outline" className="text-xs">{tag}</Badge>
                     ))}
                   </div>
-                  <Link to={`/courses/${course.id}/manage`}>
+                  <Link to={`/dashboard/courses/${course.id}/manage`}>
                     <Button size="sm" variant="outline" className="gap-2">
                       <Settings className="h-4 w-4" />
                       Manage
@@ -189,7 +189,7 @@ export function AdminDashboard() {
                 </Badge>
               </div>
             ))}
-            <Link to="/users">
+            <Link to="/dashboard/users">
               <Button variant="outline" size="sm" className="w-full">
                 View All Users
               </Button>
@@ -206,25 +206,25 @@ export function AdminDashboard() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-            <Link to="/courses/new">
+            <Link to="/dashboard/courses/new">
               <Button variant="outline" className="h-20 w-full flex-col gap-2">
                 <BookPlus className="h-6 w-6" />
                 Create Course
               </Button>
             </Link>
-            <Link to="/users/invite">
+            <Link to="/dashboard/users/invite">
               <Button variant="outline" className="h-20 w-full flex-col gap-2">
                 <UserPlus className="h-6 w-6" />
                 Invite Users
               </Button>
             </Link>
-            <Link to="/analytics">
+            <Link to="/dashboard/analytics">
               <Button variant="outline" className="h-20 w-full flex-col gap-2">
                 <Eye className="h-6 w-6" />
                 View Analytics
               </Button>
             </Link>
-            <Link to="/settings">
+            <Link to="/dashboard/settings">
               <Button variant="outline" className="h-20 w-full flex-col gap-2">
                 <Settings className="h-6 w-6" />
                 College Settings

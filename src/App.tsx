@@ -49,34 +49,95 @@ const App = () => (
               <Route index element={<Dashboard />} />
               
               {/* Super Admin Routes */}
-              <Route 
-                path="colleges" 
-                element={
-                  <ProtectedRoute allowedRoles={['super_admin']}>
-                    <CollegesManagement />
-                  </ProtectedRoute>
-                } 
-              />
+              <Route path="colleges">
+                <Route 
+                  index
+                  element={
+                    <ProtectedRoute allowedRoles={['super_admin']}>
+                      <CollegesManagement />
+                    </ProtectedRoute>
+                  } 
+                />
+                <Route 
+                  path="new"
+                  element={
+                    <ProtectedRoute allowedRoles={['super_admin']}>
+                      <div className="p-8">
+                        <h1 className="text-2xl font-bold mb-4">Add New College</h1>
+                        <p className="text-muted-foreground">College creation form - Coming Soon</p>
+                      </div>
+                    </ProtectedRoute>
+                  } 
+                />
+              </Route>
               
               {/* Admin & Super Admin Routes */}
-              <Route 
-                path="users" 
-                element={
-                  <ProtectedRoute allowedRoles={['super_admin', 'admin']}>
-                    <UsersManagement />
-                  </ProtectedRoute>
-                } 
-              />
+              <Route path="users">
+                <Route 
+                  index
+                  element={
+                    <ProtectedRoute allowedRoles={['super_admin', 'admin']}>
+                      <UsersManagement />
+                    </ProtectedRoute>
+                  } 
+                />
+                <Route 
+                  path="invite"
+                  element={
+                    <ProtectedRoute allowedRoles={['super_admin', 'admin']}>
+                      <div className="p-8">
+                        <h1 className="text-2xl font-bold mb-4">Invite Users</h1>
+                        <p className="text-muted-foreground">User invitation form - Coming Soon</p>
+                      </div>
+                    </ProtectedRoute>
+                  } 
+                />
+              </Route>
               
               {/* Course Routes */}
-              <Route 
-                path="courses" 
-                element={
-                  <ProtectedRoute allowedRoles={['super_admin', 'admin', 'trainer', 'student']}>
-                    <CoursesManagement />
-                  </ProtectedRoute>
-                } 
-              />
+              <Route path="courses">
+                <Route 
+                  index
+                  element={
+                    <ProtectedRoute allowedRoles={['super_admin', 'admin', 'trainer', 'student']}>
+                      <CoursesManagement />
+                    </ProtectedRoute>
+                  } 
+                />
+                <Route 
+                  path="new"
+                  element={
+                    <ProtectedRoute allowedRoles={['super_admin', 'admin', 'trainer']}>
+                      <div className="p-8">
+                        <h1 className="text-2xl font-bold mb-4">Create New Course</h1>
+                        <p className="text-muted-foreground">Course creation form - Coming Soon</p>
+                      </div>
+                    </ProtectedRoute>
+                  } 
+                />
+                <Route 
+                  path=":id"
+                  element={
+                    <ProtectedRoute allowedRoles={['super_admin', 'admin', 'trainer', 'student']}>
+                      <div className="p-8">
+                        <h1 className="text-2xl font-bold mb-4">Course Details</h1>
+                        <p className="text-muted-foreground">Course details view - Coming Soon</p>
+                      </div>
+                    </ProtectedRoute>
+                  } 
+                />
+                <Route 
+                  path=":id/manage"
+                  element={
+                    <ProtectedRoute allowedRoles={['super_admin', 'admin', 'trainer']}>
+                      <div className="p-8">
+                        <h1 className="text-2xl font-bold mb-4">Manage Course</h1>
+                        <p className="text-muted-foreground">Course management interface - Coming Soon</p>
+                      </div>
+                    </ProtectedRoute>
+                  } 
+                />
+              </Route>
               
               <Route 
                 path="my-courses" 
@@ -88,24 +149,50 @@ const App = () => (
               />
               
               {/* Assignment Routes */}
-              <Route 
-                path="assignments" 
-                element={
-                  <ProtectedRoute allowedRoles={['trainer', 'student']}>
-                    <AssignmentsManagement />
-                  </ProtectedRoute>
-                } 
-              />
+              <Route path="assignments">
+                <Route 
+                  index
+                  element={
+                    <ProtectedRoute allowedRoles={['trainer', 'student']}>
+                      <AssignmentsManagement />
+                    </ProtectedRoute>
+                  } 
+                />
+                <Route 
+                  path="new"
+                  element={
+                    <ProtectedRoute allowedRoles={['trainer']}>
+                      <div className="p-8">
+                        <h1 className="text-2xl font-bold mb-4">Create New Assignment</h1>
+                        <p className="text-muted-foreground">Assignment creation form - Coming Soon</p>
+                      </div>
+                    </ProtectedRoute>
+                  } 
+                />
+              </Route>
               
               {/* Group Routes */}
-              <Route 
-                path="groups" 
-                element={
-                  <ProtectedRoute allowedRoles={['staff', 'student']}>
-                    <GroupsManagement />
-                  </ProtectedRoute>
-                } 
-              />
+              <Route path="groups">
+                <Route 
+                  index
+                  element={
+                    <ProtectedRoute allowedRoles={['staff', 'student']}>
+                      <GroupsManagement />
+                    </ProtectedRoute>
+                  } 
+                />
+                <Route 
+                  path="new"
+                  element={
+                    <ProtectedRoute allowedRoles={['staff']}>
+                      <div className="p-8">
+                        <h1 className="text-2xl font-bold mb-4">Create New Group</h1>
+                        <p className="text-muted-foreground">Group creation form - Coming Soon</p>
+                      </div>
+                    </ProtectedRoute>
+                  } 
+                />
+              </Route>
               
               {/* Common Routes */}
               <Route path="calendar" element={<CalendarView />} />

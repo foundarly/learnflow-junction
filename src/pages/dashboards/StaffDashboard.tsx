@@ -78,12 +78,12 @@ export function StaffDashboard() {
               Schedule Event
             </Button>
           </Link>
-          <Link to="/groups/new">
-            <Button size="lg" className="gap-2">
-              <Plus className="h-5 w-5" />
-              Create Group
-            </Button>
-          </Link>
+        <Link to="/dashboard/groups/new">
+          <Button size="lg" className="gap-2">
+            <Plus className="h-5 w-5" />
+            Create Group
+          </Button>
+        </Link>
         </div>
       </div>
 
@@ -124,7 +124,7 @@ export function StaffDashboard() {
                 <CardTitle>Active Groups</CardTitle>
                 <CardDescription>Student collaboration groups you're managing</CardDescription>
               </div>
-              <Link to="/groups">
+              <Link to="/dashboard/groups">
                 <Button variant="ghost" size="sm">View All</Button>
               </Link>
             </div>
@@ -156,13 +156,13 @@ export function StaffDashboard() {
                     </span>
                   </div>
                   <div className="flex gap-2">
-                    <Link to={`/groups/${group.id}/chat`}>
+                    <Link to={`/dashboard/groups/${group.id}/chat`}>
                       <Button size="sm" variant="outline" className="gap-2">
                         <MessageSquare className="h-4 w-4" />
                         Chat
                       </Button>
                     </Link>
-                    <Link to={`/groups/${group.id}/manage`}>
+                    <Link to={`/dashboard/groups/${group.id}/manage`}>
                       <Button size="sm">
                         Manage
                       </Button>
@@ -172,7 +172,7 @@ export function StaffDashboard() {
               </div>
             ))}
             
-            <Link to="/groups/new">
+            <Link to="/dashboard/groups/new">
               <Button variant="outline" className="w-full h-16 border-dashed">
                 <Plus className="mr-2 h-5 w-5" />
                 Create New Group
@@ -211,7 +211,7 @@ export function StaffDashboard() {
                 </div>
               </div>
             ))}
-            <Link to="/calendar">
+            <Link to="/dashboard/calendar">
               <Button variant="outline" size="sm" className="w-full">
                 View Full Calendar
               </Button>
@@ -309,7 +309,7 @@ export function StaffDashboard() {
               </div>
             </div>
 
-            <Link to="/analytics/collaboration">
+            <Link to="/dashboard/analytics/collaboration">
               <Button variant="outline" size="sm" className="w-full">
                 View Detailed Metrics
               </Button>

@@ -82,10 +82,12 @@ export default function CoursesManagement() {
             Create, manage, and monitor all educational courses
           </p>
         </div>
-        <Button size="lg" className="gap-2 w-full sm:w-auto">
-          <Plus className="h-5 w-5" />
-          Create Course
-        </Button>
+        <Link to="/dashboard/courses/new">
+          <Button size="lg" className="gap-2 w-full sm:w-auto">
+            <Plus className="h-5 w-5" />
+            Create Course
+          </Button>
+        </Link>
       </div>
 
       {/* Stats Cards */}
@@ -301,13 +303,13 @@ export default function CoursesManagement() {
 
                   {/* Actions */}
                   <div className="flex gap-2 pt-2">
-                    <Link to={`/courses/${course.id}`} className="flex-1">
+                    <Link to={`/dashboard/courses/${course.id}`} className="flex-1">
                       <Button variant="outline" size="sm" className="w-full">
                         <Eye className="mr-2 h-4 w-4" />
                         View
                       </Button>
                     </Link>
-                    <Link to={`/courses/${course.id}/manage`} className="flex-1">
+                    <Link to={`/dashboard/courses/${course.id}/manage`} className="flex-1">
                       <Button size="sm" className="w-full">
                         <Settings className="mr-2 h-4 w-4" />
                         Manage

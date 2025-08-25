@@ -96,7 +96,7 @@ export function SuperAdminDashboard() {
                 <CardTitle>Recent Colleges</CardTitle>
                 <CardDescription>Latest college registrations and activity</CardDescription>
               </div>
-              <Link to="/colleges">
+              <Link to="/dashboard/colleges">
                 <Button variant="ghost" size="sm">
                   View All
                 </Button>
@@ -160,7 +160,7 @@ export function SuperAdminDashboard() {
               </div>
             </div>
 
-            <Link to="/analytics">
+            <Link to="/dashboard/analytics">
               <Button variant="outline" className="w-full">
                 <Eye className="mr-2 h-4 w-4" />
                 View Detailed Analytics
@@ -178,19 +178,19 @@ export function SuperAdminDashboard() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <Link to="/colleges/new">
+            <Link to="/dashboard/colleges/new">
               <Button variant="outline" className="h-20 w-full flex-col gap-2">
                 <Building className="h-6 w-6" />
                 Add New College
               </Button>
             </Link>
-            <Link to="/users">
+            <Link to="/dashboard/users">
               <Button variant="outline" className="h-20 w-full flex-col gap-2">
                 <Users className="h-6 w-6" />
                 Manage Users
               </Button>
             </Link>
-            <Link to="/analytics">
+            <Link to="/dashboard/analytics">
               <Button variant="outline" className="h-20 w-full flex-col gap-2">
                 <TrendingUp className="h-6 w-6" />
                 View Reports

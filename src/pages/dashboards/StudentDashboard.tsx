@@ -60,8 +60,8 @@ export function StudentDashboard() {
             Continue your learning journey. You have 3 assignments due this week.
           </p>
         </div>
-        <Link to="/calendar">
-          <Button size="lg" className="gap-2">
+        <Link to="/dashboard/calendar">
+          <Button size="lg" className="gap-2 w-full sm:w-auto">
             <Calendar className="h-5 w-5" />
             View Schedule
           </Button>
@@ -98,7 +98,7 @@ export function StudentDashboard() {
                 <CardTitle>Current Courses</CardTitle>
                 <CardDescription>Your active learning paths</CardDescription>
               </div>
-              <Link to="/my-courses">
+              <Link to="/dashboard/my-courses">
                 <Button variant="ghost" size="sm">View All</Button>
               </Link>
             </div>
@@ -133,7 +133,7 @@ export function StudentDashboard() {
                       {course.enrolled_students} students
                     </span>
                   </div>
-                  <Link to={`/courses/${course.id}`}>
+                  <Link to={`/dashboard/courses/${course.id}`}>
                     <Button size="sm" className="gap-2">
                       <Play className="h-4 w-4" />
                       Continue
@@ -171,7 +171,7 @@ export function StudentDashboard() {
                 </div>
               </div>
             ))}
-            <Link to="/calendar">
+            <Link to="/dashboard/calendar">
               <Button variant="outline" size="sm" className="w-full">
                 View Full Calendar
               </Button>
@@ -190,7 +190,7 @@ export function StudentDashboard() {
                 <CardTitle>Pending Assignments</CardTitle>
                 <CardDescription>Assignments requiring your attention</CardDescription>
               </div>
-              <Link to="/assignments">
+              <Link to="/dashboard/assignments">
                 <Button variant="ghost" size="sm">View All</Button>
               </Link>
             </div>
@@ -252,7 +252,7 @@ export function StudentDashboard() {
               </div>
             </div>
 
-            <Link to="/progress">
+            <Link to="/dashboard/progress">
               <Button variant="outline" size="sm" className="w-full">
                 View All Achievements
               </Button>
