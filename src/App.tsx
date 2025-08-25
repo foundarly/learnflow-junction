@@ -10,7 +10,16 @@ import { DashboardLayout } from "@/components/layout/DashboardLayout";
 // Pages
 import Index from "./pages/Index";
 import Login from "./pages/Auth/Login";
+import Register from "./pages/Auth/Register";
 import Dashboard from "./pages/Dashboard";
+import CollegesManagement from "./pages/Colleges/CollegesManagement";
+import UsersManagement from "./pages/Users/UsersManagement";
+import CoursesManagement from "./pages/Courses/CoursesManagement";
+import MyCourses from "./pages/Students/MyCourses";
+import AssignmentsManagement from "./pages/Assignments/AssignmentsManagement";
+import GroupsManagement from "./pages/Groups/GroupsManagement";
+import CalendarView from "./pages/Calendar/CalendarView";
+import UserProfile from "./pages/Profile/UserProfile";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -26,6 +35,7 @@ const App = () => (
             {/* Public Routes */}
             <Route path="/" element={<Index />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
             
             {/* Protected Dashboard Routes */}
             <Route 
@@ -43,7 +53,7 @@ const App = () => (
                 path="colleges" 
                 element={
                   <ProtectedRoute allowedRoles={['super_admin']}>
-                    <div className="p-8">Colleges Management - Coming Soon</div>
+                    <CollegesManagement />
                   </ProtectedRoute>
                 } 
               />
@@ -53,7 +63,7 @@ const App = () => (
                 path="users" 
                 element={
                   <ProtectedRoute allowedRoles={['super_admin', 'admin']}>
-                    <div className="p-8">User Management - Coming Soon</div>
+                    <UsersManagement />
                   </ProtectedRoute>
                 } 
               />
@@ -63,7 +73,7 @@ const App = () => (
                 path="courses" 
                 element={
                   <ProtectedRoute allowedRoles={['super_admin', 'admin', 'trainer', 'student']}>
-                    <div className="p-8">Courses - Coming Soon</div>
+                    <CoursesManagement />
                   </ProtectedRoute>
                 } 
               />
@@ -72,7 +82,7 @@ const App = () => (
                 path="my-courses" 
                 element={
                   <ProtectedRoute allowedRoles={['student']}>
-                    <div className="p-8">My Courses - Coming Soon</div>
+                    <MyCourses />
                   </ProtectedRoute>
                 } 
               />
@@ -82,7 +92,7 @@ const App = () => (
                 path="assignments" 
                 element={
                   <ProtectedRoute allowedRoles={['trainer', 'student']}>
-                    <div className="p-8">Assignments - Coming Soon</div>
+                    <AssignmentsManagement />
                   </ProtectedRoute>
                 } 
               />
@@ -92,13 +102,14 @@ const App = () => (
                 path="groups" 
                 element={
                   <ProtectedRoute allowedRoles={['staff', 'student']}>
-                    <div className="p-8">Groups - Coming Soon</div>
+                    <GroupsManagement />
                   </ProtectedRoute>
                 } 
               />
               
               {/* Common Routes */}
-              <Route path="calendar" element={<div className="p-8">Calendar - Coming Soon</div>} />
+              <Route path="calendar" element={<CalendarView />} />
+              <Route path="profile" element={<UserProfile />} />
               <Route path="schedule" element={<div className="p-8">Schedule - Coming Soon</div>} />
               <Route path="progress" element={<div className="p-8">Progress - Coming Soon</div>} />
               <Route path="attendance" element={<div className="p-8">Attendance - Coming Soon</div>} />
